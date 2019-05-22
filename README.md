@@ -1,4 +1,4 @@
-# profileui
+# Bank Profile
 
 A new Flutter application.
 
