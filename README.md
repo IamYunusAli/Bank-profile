@@ -2,6 +2,11 @@
 
 A new Flutter application.
 
+I Will be Making Two UI designes of My own per Week :smile:
+### Show some :heart: and :star: the repo to support the project and follow me
+
+<img  height=500px width=300px src="https://github.com/BubblyBoy/Bank-profile/blob/master/screenshots/Screenshot_20190522-235934.png"> 
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
