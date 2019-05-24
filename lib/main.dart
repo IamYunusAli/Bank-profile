@@ -27,14 +27,37 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+  TabController tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tabController = new TabController(length: 5, vsync: this);
+  }
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Material(
+        color: Colors.indigo[500],
+        shadowColor: Colors.black.withOpacity(0.5),
+        child: TabBar(
+          controller: tabController,
+          indicatorColor: Colors.white,
+          tabs: <Widget>[
+            new Tab(icon: Icon(Icons.home, color: Colors.white,),),
+            new Tab(icon: Icon(Icons.chat, color: Colors.white,),),
+            new Tab(icon: Icon(Icons.search, color: Colors.white,),),
+            new Tab(icon: Icon(Icons.group, color: Colors.white,),),
+            new Tab(icon: Icon(Icons.person, color: Colors.white, size: 40,),)
+          ],
+        ),
+      ),
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Dashboard', style: TextStyle(color: Colors.white),),
+        title: Text('Profile', style: TextStyle(color: Colors.white),),
         elevation: 0,
         backgroundColor: Colors.indigo[500],
 
@@ -51,16 +74,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         ),
         body: Container(
-          color: Colors.yellow.withOpacity(0.7),
+          color: Colors.white,
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 25),
+                padding: EdgeInsets.only(top: 10),
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/2,
+                height: MediaQuery.of(context).size.height/2-40,
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
+                      color: Colors.black.withOpacity(0.7),
                       blurRadius: 20,
                       spreadRadius: 10,
 
@@ -112,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 10,),
                     Text('@selenagomez', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5, bottom: 35),
+                      padding: const EdgeInsets.only( bottom: 35),
                       child: Text('Selena Gomez', style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.bold  ),),
                     ),
                     Padding(
@@ -128,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(30),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.white,
+                                    color: Colors.indigo[500],
                                     spreadRadius:1,
                                   )
                                 ]
@@ -156,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(30),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.white,
+                                    color: Colors.indigo[500],
                                     spreadRadius:1,
                                   )
                                 ]
@@ -184,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(30),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.white,
+                                    color: Colors.indigo[500],
                                     spreadRadius:1,
                                   )
                                 ]
@@ -211,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(30),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.white,
+                                    color: Colors.indigo[500],
                                     spreadRadius:1,
                                   )
                                 ]
@@ -239,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ),
               Container(
-                padding: EdgeInsets.only(top: 45, right: 34, left: 34),
+                padding: EdgeInsets.only(top: 40, right: 34, left: 34),
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -252,12 +276,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 85,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
+                                    
                                   )
                                 ]
 
@@ -267,8 +293,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: <Widget>[
-                                  Icon(Icons.dashboard, color: Colors.black,),
-                                  Text('Dashboard', style: TextStyle(color: Colors.black),)
+                                  Icon(Icons.dashboard, color: Colors.white,),
+                                  Text('Dashboard', style: TextStyle(color: Colors.white),)
                                 ],
                               ),
                             ),
@@ -278,12 +304,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 85,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
                                   )
                                 ]
 
@@ -293,8 +320,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: <Widget>[
-                                  Icon(Icons.account_balance, color: Colors.black,),
-                                  Text('Balance', style: TextStyle(color: Colors.black),)
+                                  Icon(Icons.account_balance, color: Colors.white),
+                                  Text('Balance', style: TextStyle(color: Colors.white),)
                                 ],
                               ),
                             ),
@@ -304,12 +331,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 85,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
                                   )
                                 ]
 
@@ -319,8 +347,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: <Widget>[
-                                  Icon(Icons.credit_card, color: Colors.black,),
-                                  Text('CreditCard', style: TextStyle(color: Colors.black),)
+                                  Icon(Icons.credit_card, color: Colors.white,),
+                                  Text('CreditCard', style: TextStyle(color: Colors.white),)
                                 ],
                               ),
                             ),
@@ -338,12 +366,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 85,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
                                   )
                                 ]
 
@@ -353,8 +382,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: <Widget>[
-                                Icon(Icons.language,color: Colors.black,),
-                                Text('Language', style: TextStyle(color: Colors.black),)
+                                Icon(Icons.language,color: Colors.white,),
+                                Text('Language', style: TextStyle(color: Colors.white),)
                               ],
                               ),
                             ),
@@ -364,12 +393,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 85,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
                                   )
                                 ]
 
@@ -378,8 +408,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(children: <Widget>[
-                                Icon(Icons.question_answer,color: Colors.black,),
-                                Text('Questions', style: TextStyle(color: Colors.black),)
+                                Icon(Icons.question_answer,color: Colors.white,),
+                                Text('Questions', style: TextStyle(color: Colors.white),)
 
                               ],
                               ),
@@ -392,12 +422,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: BoxDecoration(
 
 
-                                color: Colors.white,
+                                color: Colors.indigo[500],
                                 borderRadius: BorderRadius.circular(5),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
-                                    spreadRadius:1,
+                                    color: Colors.black.withOpacity(0.3),
+                                    spreadRadius:6,
+                                    blurRadius: 4
                                   )
                                 ]
 
@@ -406,8 +437,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(children: <Widget>[
-                                Icon(Icons.visibility,color: Colors.black,),
-                                Text('Visibility', style: TextStyle(color: Colors.black),)
+                                Icon(Icons.visibility,color: Colors.white,),
+                                Text('Visibility', style: TextStyle(color: Colors.white),)
 
                               ],
                               ),
@@ -424,6 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+        
     );
   }
 }
