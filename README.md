@@ -5,7 +5,7 @@ A new Flutter application.
 I Will be Making Two UI designes of My own per Week :smile:
 ### Show some :heart: and :star: the repo to support the project and follow me
 
-<img  height=500px width=300px src=". https://github.com/BubblyBoy/Bank-profile/blob/master/Screenshot_20190525-164447.png   "> 
+<img  height=500px width=300px src="https://github.com/BubblyBoy/Bank-profile/blob/master/Screenshot_20190525-164447.png"> 
 
 ## Getting Started
 
